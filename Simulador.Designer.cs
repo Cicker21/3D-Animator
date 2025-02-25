@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            tb_archivo = new TextBox();
             label1 = new Label();
             nud_G = new NumericUpDown();
             label2 = new Label();
             nud_Pasos = new NumericUpDown();
             label6 = new Label();
-            button1 = new Button();
+            b_generar = new Button();
             nud_FR = new NumericUpDown();
             label3 = new Label();
             nud_GY = new NumericUpDown();
@@ -63,7 +63,7 @@
             tb_v4 = new TextBox();
             label18 = new Label();
             tb_v8 = new TextBox();
-            button2 = new Button();
+            b_visualizar = new Button();
             ((System.ComponentModel.ISupportInitialize)nud_G).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nud_Pasos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nud_FR).BeginInit();
@@ -74,13 +74,13 @@
             ((System.ComponentModel.ISupportInitialize)nud_FX).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // tb_archivo
             // 
-            textBox1.Location = new Point(12, 27);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(236, 23);
-            textBox1.TabIndex = 0;
-            textBox1.Text = "test";
+            tb_archivo.Location = new Point(12, 27);
+            tb_archivo.Name = "tb_archivo";
+            tb_archivo.Size = new Size(236, 23);
+            tb_archivo.TabIndex = 0;
+            tb_archivo.Text = "test";
             // 
             // label1
             // 
@@ -127,15 +127,15 @@
             label6.TabIndex = 10;
             label6.Text = "Pasos";
             // 
-            // button1
+            // b_generar
             // 
-            button1.Location = new Point(316, 27);
-            button1.Name = "button1";
-            button1.Size = new Size(102, 41);
-            button1.TabIndex = 14;
-            button1.Text = "GENERAR";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            b_generar.Location = new Point(316, 27);
+            b_generar.Name = "b_generar";
+            b_generar.Size = new Size(102, 41);
+            b_generar.TabIndex = 14;
+            b_generar.Text = "GENERAR";
+            b_generar.UseVisualStyleBackColor = true;
+            b_generar.Click += generar;
             // 
             // nud_FR
             // 
@@ -380,22 +380,22 @@
             tb_v8.TabIndex = 49;
             tb_v8.Text = "-1.0, 1.0, -1.0";
             // 
-            // button2
+            // b_visualizar
             // 
-            button2.Location = new Point(343, 376);
-            button2.Name = "button2";
-            button2.Size = new Size(93, 45);
-            button2.TabIndex = 51;
-            button2.Text = "VISUALIZAR";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            b_visualizar.Location = new Point(343, 376);
+            b_visualizar.Name = "b_visualizar";
+            b_visualizar.Size = new Size(93, 45);
+            b_visualizar.TabIndex = 51;
+            b_visualizar.Text = "VISUALIZAR";
+            b_visualizar.UseVisualStyleBackColor = true;
+            b_visualizar.Click += visualizar;
             // 
             // Simulador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(474, 519);
-            Controls.Add(button2);
+            Controls.Add(b_visualizar);
             Controls.Add(label18);
             Controls.Add(tb_v8);
             Controls.Add(label17);
@@ -424,13 +424,13 @@
             Controls.Add(label10);
             Controls.Add(nud_FR);
             Controls.Add(label3);
-            Controls.Add(button1);
+            Controls.Add(b_generar);
             Controls.Add(nud_Pasos);
             Controls.Add(label6);
             Controls.Add(label2);
             Controls.Add(nud_G);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(tb_archivo);
             Name = "Simulador";
             Text = "Simulador";
             ((System.ComponentModel.ISupportInitialize)nud_G).EndInit();
@@ -447,13 +447,13 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox tb_archivo;
         private Label label1;
         private NumericUpDown nud_G;
         private Label label2;
         private NumericUpDown nud_Pasos;
         private Label label6;
-        private Button button1;
+        private Button b_generar;
         private NumericUpDown nud_FR;
         private Label label3;
         private NumericUpDown nud_GY;
@@ -482,6 +482,6 @@
         private TextBox tb_v4;
         private Label label18;
         private TextBox tb_v8;
-        private Button button2;
+        private Button b_visualizar;
     }
 }
