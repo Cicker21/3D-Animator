@@ -1,0 +1,7 @@
+C:\Users\todom\Desktop\GIM\1 AÑO\2 CUATRI\Proyecto 1\3D-01\bin\Release\net8.0-windows\publish\win-x64\3D-01.pdb
+C:\Users\todom\Desktop\GIM\1 AÑO\2 CUATRI\Proyecto 1\3D-01\bin\Release\net8.0-windows\publish\win-x64\D3DCompiler_47_cor3.dll
+C:\Users\todom\Desktop\GIM\1 AÑO\2 CUATRI\Proyecto 1\3D-01\bin\Release\net8.0-windows\publish\win-x64\PenImc_cor3.dll
+C:\Users\todom\Desktop\GIM\1 AÑO\2 CUATRI\Proyecto 1\3D-01\bin\Release\net8.0-windows\publish\win-x64\PresentationNative_cor3.dll
+C:\Users\todom\Desktop\GIM\1 AÑO\2 CUATRI\Proyecto 1\3D-01\bin\Release\net8.0-windows\publish\win-x64\vcruntime140_cor3.dll
+C:\Users\todom\Desktop\GIM\1 AÑO\2 CUATRI\Proyecto 1\3D-01\bin\Release\net8.0-windows\publish\win-x64\wpfgfx_cor3.dll
+C:\Users\todom\Desktop\GIM\1 AÑO\2 CUATRI\Proyecto 1\3D-01\bin\Release\net8.0-windows\publish\win-x64\3D-01.exe
