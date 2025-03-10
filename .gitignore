@@ -1,22 +1,8 @@
-# Ignorar archivos de compilación
+# Formatos ignorados:
 *.exe
 *.dll
 *.obj
-*.class
 
-# Ignorar carpetas de dependencias
-node_modules/
+# Carpetas ignoradas:
 bin/
 obj/
-
-# Ignorar archivos de configuración del sistema
-.DS_Store
-Thumbs.db
-
-# Ignorar archivos personales o de entorno
-.env
-my_secrets.txt
-
-# Ignorar todo en una carpeta excepto un archivo
-logs/
-!logs/keep_this.log
