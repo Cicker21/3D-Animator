@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>C:\Users\todom\Desktop\GIM\1 AÑO\2 CUATRI\Proyecto 1\3D-01\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="OBJLoader.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Visualizador.cs">
       <SubType>Form</SubType>
     </Compile>
