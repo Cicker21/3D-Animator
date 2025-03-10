@@ -3,6 +3,7 @@
 *.dll
 *.obj
 *.tmp
+*.bat
 
 # Carpetas ignoradas:
 bin/
