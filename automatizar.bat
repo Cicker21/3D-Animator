@@ -1,5 +1,5 @@
 @echo off
-color a
+color e
 set /p commitMsg=Ingrese el mensaje del commit: 
 git add -A
 git commit -m "%commitMsg%"

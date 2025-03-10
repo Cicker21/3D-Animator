@@ -6,3 +6,5 @@
 # Carpetas ignoradas:
 bin/
 obj/
+Properties/
+.vs/
