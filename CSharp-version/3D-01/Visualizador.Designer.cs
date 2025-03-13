@@ -53,7 +53,7 @@
             ClientSize = new Size(829, 450);
             Controls.Add(openglControl1);
             Name = "Visualizador";
-            Text = "Form1";
+            Text = "Visualizador";
             ((System.ComponentModel.ISupportInitialize)openglControl1).EndInit();
             ResumeLayout(false);
         }
