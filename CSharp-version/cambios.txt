@@ -1,0 +1,43 @@
+--10/03/2025--
+
+--ObjLoader.cs //Terminados los tests, implementación futura y creación de 3D-02 en proyecto paralelo
+implementando .obj en vez de 8 vertices genéricos
+Visualizador.cs por lo tanto ya no muestra los valores de los 8 vertices sino la simulacion full-window
+Simulador.cs ya no pide los valores de los 8 vertices
+++Posicion.cs //Formulario para dar la posicion inicial (primera linea) de cada objeto
+
+\\Cambio de formato en el .csv 
+	//un unico objeto de 8 vertices
+	|v1.x,v1.y,v1.z|...|vf.x,vf.y,vf.z
+	//multiples objetos de 8 vertices
+	[v1.x,v1.y,v1.z]...[vf.x,vf.y,vf.z]$[v1.x,v1.y,v1.z]...[vf.x,vf.y,vf.z]$
+
+--12/03/2025--
+
+\\Cambio de formato en el .csv 
+	El nuevo formato es sencillo, da 8 vertices no ordenados, 
+	lo cual dibuja los vertices .obj de manera desordenada haciendo artistas de vertices de distintas caras
+	
+	Ideas:
+		Calcular que 3-4 vertices coinciden en un mismo plano y considerarlo cara (costoso computacionalmente)
+		Cambiar formato (por caras en vez de vértices) (.csv mas largo, menor costo computacional, mayor coste de memoria)
+
+
+	//multiples objetos de 8 vertices
+	[v1.x,v1.y,v1.z]...[vf.x,vf.y,vf.z]$[v1.x,v1.y,v1.z]...[vf.x,vf.y,vf.z]$
+	//poner [] para indicar los vertices es visualmente bonito pero innecesario, tal vez simplificamos formato
+	//separar por caras y vertices
+	(ejemplo de objetos)
+	|[1.0,2.0,3.0][4.0,5.0,6.0][10.0,11.0,12.0][7.0,8.0,9.0]||[...][...][...][...]|...|...|$||||...||$
+	
+\\Posiciones.cs -> Bases.cs
+
+Reestructuración del proyecto
+
+++Inicio.cs //Interfaz mas sencilla, no te pide ingresar vértices desde un inicio
+		Bases.cs es ahora quien se encarga de crear el nuevo archivo en vez de Simulador.cs
+		Simulador.cs solo añadirá fisicas a archivos con la última línea como referencia
+
+Visualizador.cs ahora deberá leer caras
+
+

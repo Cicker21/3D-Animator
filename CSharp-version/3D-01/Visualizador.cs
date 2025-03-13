@@ -1,12 +1,11 @@
 using System;
-using System.Globalization;
-using System.Numerics;
+using System.IO;
 using System.Windows.Forms;
+using System.Globalization;
 using SharpGL;
 
 namespace _3D_01
 {
-    // Estructura para representar un vértice
     public struct Vertex
     {
         public float X, Y, Z;
@@ -19,26 +18,12 @@ namespace _3D_01
         }
     }
 
-    public partial class VIsualizador : Form
+    public partial class Visualizador : Form
     {
-        // Definir un arreglo de vértices (para el cubo)
-        private Vertex[] vertices = new Vertex[]
-        {
-            new Vertex(-1.0f, -1.0f, 1.0f),  // Vértice 1
-            new Vertex(1.0f, -1.0f, 1.0f),   // Vértice 2
-            new Vertex(1.0f, 1.0f, 1.0f),    // Vértice 3
-            new Vertex(-1.0f, 1.0f, 1.0f),   // Vértice 4
-            new Vertex(-1.0f, -1.0f, -1.0f), // Vértice 5
-            new Vertex(1.0f, -1.0f, -1.0f),  // Vértice 6
-            new Vertex(1.0f, 1.0f, -1.0f),   // Vértice 7
-            new Vertex(-1.0f, 1.0f, -1.0f)   // Vértice 8
-        };
-
-
-        public VIsualizador()
+        public Visualizador()
         {
             InitializeComponent();
-            lines = abrir_Documento(); //Pedir archivo al cargar el formulario
+            lines = abrir_Documento(); // Pedir archivo al cargar el formulario
         }
 
         private string[] lines = null;
@@ -51,145 +36,131 @@ namespace _3D_01
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
-
-                string[] lineas = sr.ReadToEnd().Split('\n');
-
-                sr.Close();
-
-                return lineas;
+                return File.ReadAllLines(openFileDialog1.FileName);
             }
 
-            // Si no se seleccionó ningún archivo, retornar null
             return null;
         }
 
         private int indice = 0;
 
-        //Función que lee las lineas del archivo y modifica los valores de los vertices acorde a la linea
-        private void valores_Vertices()
+        private string[] siguientes_objetos()
         {
-            
-            string linea = lines[indice];
-            string[] Lvectores = linea.Split('|');
+            if (lines == null || indice >= lines.Length)
+                return null;
 
-            for (int i = 1; i < Lvectores.Length; i++)
-            {
-                string[] valores = Lvectores[i].Split(',');
+            string objs = lines[indice];
+            if (string.IsNullOrWhiteSpace(objs))
+                return null;
 
-                float x = float.Parse(valores[0], CultureInfo.InvariantCulture);
-                float y = float.Parse(valores[1], CultureInfo.InvariantCulture);
-                float z = float.Parse(valores[2], CultureInfo.InvariantCulture);
-
-
-                vertices[i - 1].X = x;
-                vertices[i - 1].Y = y;
-                vertices[i - 1].Z = z;
-            }
-
-            if (indice<lines.Length-1) indice++;
-
-
+            return objs.Split('%');
         }
 
-        //Función que dibuja los gráficos en el formulario
+        private float[][] colores = new float[][]
+        {
+            new float[] { 1.0f, 0.0f, 0.0f },
+            new float[] { 0.0f, 1.0f, 0.0f },
+            new float[] { 0.0f, 0.0f, 1.0f },
+            new float[] { 1.0f, 1.0f, 0.0f },
+            new float[] { 1.0f, 0.0f, 1.0f },
+            new float[] { 0.0f, 1.0f, 1.0f }
+        };
+
+        private int ct = 0;
+        private float[] obtenerColor()
+        {
+            float[] color = colores[ct];
+            ct = (ct + 1) % colores.Length;
+            return color;
+        }
+
+        float angle = 0.0f;
         private void openGLControl1_OpenGLDraw(object sender, RenderEventArgs e)
         {
-
             OpenGL gl = openglControl1.OpenGL;
 
-            //Limpiar la pantalla y el buffer de profundidad
+            // Limpiar la pantalla y el buffer de profundidad
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
             gl.LoadIdentity();
 
-            //Alejar el cubo de la cámara
-            gl.Translate(0.0f, 0.0f, -5.0f);
+            // Configurar la cámara
+            gl.Translate(0.0f, 0.0f, -15.0f); // Alejar la cámara
+            angle += 0.5f; // Incrementar el ángulo para la animación
 
-            //Dibujar el cubo con colores en cada cara
+            if (lines == null)
+            {
+                return; // Si no hay datos, salir del método
+            }
 
-            gl.Begin(OpenGL.GL_QUADS);
+            // Obtener los objetos a dibujar
+            string[] objetos = siguientes_objetos();
+            if (objetos == null || objetos.Length == 0)
+            {
+                return; // Si no hay objetos, salir del método
+            }
 
-            // Cara frontal (roja)
-            gl.Color(1.0f, 0.0f, 0.0f);
-            gl.Vertex(vertices[0].X, vertices[0].Y, vertices[0].Z); // Vértice 1
-            gl.Vertex(vertices[1].X, vertices[1].Y, vertices[1].Z); // Vértice 2
-            gl.Vertex(vertices[2].X, vertices[2].Y, vertices[2].Z); // Vértice 3
-            gl.Vertex(vertices[3].X, vertices[3].Y, vertices[3].Z); // Vértice 4
+            // Dibujar cada objeto
+            for (int k = 0; k < objetos.Length; k++)
+            {
+                if (string.IsNullOrWhiteSpace(objetos[k]))
+                    continue;
 
-            // Cara trasera (verde)
-            gl.Color(0.0f, 1.0f, 0.0f);
-            gl.Vertex(vertices[4].X, vertices[4].Y, vertices[4].Z); // Vértice 5
-            gl.Vertex(vertices[7].X, vertices[7].Y, vertices[7].Z); // Vértice 8
-            gl.Vertex(vertices[6].X, vertices[6].Y, vertices[6].Z); // Vértice 7
-            gl.Vertex(vertices[5].X, vertices[5].Y, vertices[5].Z); // Vértice 6
+                gl.PushMatrix(); // Guardar la matriz actual
 
-            // Cara izquierda (azul)
-            gl.Color(0.0f, 0.0f, 1.0f);
-            gl.Vertex(vertices[4].X, vertices[4].Y, vertices[4].Z); // Vértice 5
-            gl.Vertex(vertices[0].X, vertices[0].Y, vertices[0].Z); // Vértice 1
-            gl.Vertex(vertices[3].X, vertices[3].Y, vertices[3].Z); // Vértice 4
-            gl.Vertex(vertices[7].X, vertices[7].Y, vertices[7].Z); // Vértice 8
+                // Aplicar transformaciones (traslación y rotación)
+                gl.Translate(2.0f * k, 0.0f, 0.0f); // Mover cada objeto a una posición diferente
+                gl.Rotate(angle, 1.0f, 1.0f, 0.0f); // Rotar el objeto
 
-            // Cara derecha (amarillo)
-            gl.Color(1.0f, 1.0f, 0.0f);
-            gl.Vertex(vertices[1].X, vertices[1].Y, vertices[1].Z); // Vértice 2
-            gl.Vertex(vertices[5].X, vertices[5].Y, vertices[5].Z); // Vértice 6
-            gl.Vertex(vertices[6].X, vertices[6].Y, vertices[6].Z); // Vértice 7
-            gl.Vertex(vertices[2].X, vertices[2].Y, vertices[2].Z); // Vértice 3
+                // Dibujar el objeto
+                DibujarObjeto(gl, objetos[k]);
 
-            // Cara superior (cyan)
-            gl.Color(0.0f, 1.0f, 1.0f);
-            gl.Vertex(vertices[3].X, vertices[3].Y, vertices[3].Z); // Vértice 4
-            gl.Vertex(vertices[2].X, vertices[2].Y, vertices[2].Z); // Vértice 3
-            gl.Vertex(vertices[6].X, vertices[6].Y, vertices[6].Z); // Vértice 7
-            gl.Vertex(vertices[7].X, vertices[7].Y, vertices[7].Z); // Vértice 8
+                gl.PopMatrix(); // Restaurar la matriz anterior
+            }
 
-            // Cara inferior (magenta)
-            gl.Color(1.0f, 0.0f, 1.0f);
-            gl.Vertex(vertices[0].X, vertices[0].Y, vertices[0].Z); // Vértice 1
-            gl.Vertex(vertices[4].X, vertices[4].Y, vertices[4].Z); // Vértice 5
-            gl.Vertex(vertices[5].X, vertices[5].Y, vertices[5].Z); // Vértice 6
-            gl.Vertex(vertices[1].X, vertices[1].Y, vertices[1].Z); // Vértice 2
-
-            gl.End();
-            gl.Flush();
-
-            imprimir_Datos();
-            valores_Vertices();
         }
 
-        //Calcula la distancia entre dos vértices (no implementado)
-        public float CalcularDistancia(Vertex punto1, Vertex punto2)
+        private void DibujarObjeto(OpenGL gl, string objeto)
         {
-            return (float)Math.Sqrt(
-                Math.Pow(punto2.X - punto1.X, 2) +
-                Math.Pow(punto2.Y - punto1.Y, 2) +
-                Math.Pow(punto2.Z - punto1.Z, 2)
-            );
+            string[] caras = objeto.Split('|');
+
+            foreach (string cara in caras)
+            {
+                if (string.IsNullOrWhiteSpace(cara))
+                {
+                    continue; // Si la cara está vacía, continuar con la siguiente
+                }
+
+                // Obtener el color para la cara actual
+                float[] color = obtenerColor();
+                gl.Color(color[0], color[1], color[2]);
+
+                // Dibujar la cara
+                gl.Begin(OpenGL.GL_QUADS);
+                string[] vertices = cara.Split('=');
+                foreach (string vertice in vertices)
+                {
+                    if (string.IsNullOrWhiteSpace(vertice))
+                    {
+                        continue; // Si el vértice está vacío, continuar con el siguiente
+                    }
+                    Vertex v = strVertex(vertice);
+                    gl.Vertex(v.X, v.Y, v.Z);
+                }
+                gl.End();
+            }
         }
 
-        
-        //Definir un punto de referencia (no implementado)
-        Vertex puntoReferencia = new Vertex(0.0f, 0.0f, 0.0f); // Origen (0, 0, 0)
-
-        private int frames_ct = 0; //Contador de frames
-        private void imprimir_Datos()
+        private Vertex strVertex(string coords)
         {
-            frames_ct++;  
-            v_txt.Text = frames_ct.ToString();
+            string[] partes = coords.Split(',');
 
-            //Actualizar los datos de los vectores que se muestran en el formulario
-            v1_txt.Text = "(" + vertices[0].X + ", " + vertices[0].Y + ", " + vertices[0].Z + ")";
-            v2_txt.Text = "(" + vertices[1].X + ", " + vertices[1].Y + ", " + vertices[1].Z + ")";
-            v3_txt.Text = "(" + vertices[2].X + ", " + vertices[2].Y + ", " + vertices[2].Z + ")";
-            v4_txt.Text = "(" + vertices[3].X + ", " + vertices[3].Y + ", " + vertices[3].Z + ")";
-            v5_txt.Text = "(" + vertices[4].X + ", " + vertices[4].Y + ", " + vertices[4].Z + ")";
-            v6_txt.Text = "(" + vertices[5].X + ", " + vertices[5].Y + ", " + vertices[5].Z + ")";
-            v7_txt.Text = "(" + vertices[6].X + ", " + vertices[6].Y + ", " + vertices[6].Z + ")";
-            v8_txt.Text = "(" + vertices[7].X + ", " + vertices[7].Y + ", " + vertices[7].Z + ")";
+            // Convertir las coordenadas a float, usando CultureInfo.InvariantCulture
+            float x = float.Parse(partes[0], CultureInfo.InvariantCulture);
+            float y = float.Parse(partes[1], CultureInfo.InvariantCulture);
+            float z = float.Parse(partes[2], CultureInfo.InvariantCulture);
 
+            return new Vertex(x, y, z);
         }
-
 
     }
 }

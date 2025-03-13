@@ -1,0 +1,319 @@
+﻿namespace _3D_01
+{
+    partial class Fisica
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            nud_tmñ = new NumericUpDown();
+            label1 = new Label();
+            b_visualizar = new Button();
+            label11 = new Label();
+            nud_FZ = new NumericUpDown();
+            nud_FY = new NumericUpDown();
+            label12 = new Label();
+            nud_FX = new NumericUpDown();
+            label13 = new Label();
+            nud_GY = new NumericUpDown();
+            label9 = new Label();
+            nud_GX = new NumericUpDown();
+            label10 = new Label();
+            numericUpDown1 = new NumericUpDown();
+            label4 = new Label();
+            label2 = new Label();
+            numericUpDown2 = new NumericUpDown();
+            numericUpDown3 = new NumericUpDown();
+            label3 = new Label();
+            numericUpDown4 = new NumericUpDown();
+            label5 = new Label();
+            ((System.ComponentModel.ISupportInitialize)nud_tmñ).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_FZ).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_FY).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_FX).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GY).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GX).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
+            SuspendLayout();
+            // 
+            // nud_tmñ
+            // 
+            nud_tmñ.DecimalPlaces = 2;
+            nud_tmñ.Location = new Point(12, 44);
+            nud_tmñ.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_tmñ.Name = "nud_tmñ";
+            nud_tmñ.Size = new Size(120, 23);
+            nud_tmñ.TabIndex = 37;
+            nud_tmñ.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(35, 15);
+            label1.TabIndex = 36;
+            label1.Text = "Masa";
+            // 
+            // b_visualizar
+            // 
+            b_visualizar.Location = new Point(149, 269);
+            b_visualizar.Name = "b_visualizar";
+            b_visualizar.Size = new Size(120, 45);
+            b_visualizar.TabIndex = 68;
+            b_visualizar.Text = "VISUALIZAR";
+            b_visualizar.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(287, 139);
+            label11.Name = "label11";
+            label11.Size = new Size(23, 15);
+            label11.TabIndex = 67;
+            label11.Text = "F Z";
+            // 
+            // nud_FZ
+            // 
+            nud_FZ.Location = new Point(287, 157);
+            nud_FZ.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_FZ.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            nud_FZ.Name = "nud_FZ";
+            nud_FZ.Size = new Size(120, 23);
+            nud_FZ.TabIndex = 66;
+            // 
+            // nud_FY
+            // 
+            nud_FY.Location = new Point(149, 157);
+            nud_FY.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_FY.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            nud_FY.Name = "nud_FY";
+            nud_FY.Size = new Size(120, 23);
+            nud_FY.TabIndex = 65;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(149, 139);
+            label12.Name = "label12";
+            label12.Size = new Size(23, 15);
+            label12.TabIndex = 64;
+            label12.Text = "F Y";
+            // 
+            // nud_FX
+            // 
+            nud_FX.Location = new Point(12, 157);
+            nud_FX.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_FX.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            nud_FX.Name = "nud_FX";
+            nud_FX.Size = new Size(120, 23);
+            nud_FX.TabIndex = 63;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(12, 139);
+            label13.Name = "label13";
+            label13.Size = new Size(23, 15);
+            label13.TabIndex = 62;
+            label13.Text = "F X";
+            // 
+            // nud_GY
+            // 
+            nud_GY.Location = new Point(149, 113);
+            nud_GY.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_GY.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            nud_GY.Name = "nud_GY";
+            nud_GY.Size = new Size(120, 23);
+            nud_GY.TabIndex = 61;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(149, 95);
+            label9.Name = "label9";
+            label9.Size = new Size(39, 15);
+            label9.TabIndex = 60;
+            label9.Text = "Giro Y";
+            // 
+            // nud_GX
+            // 
+            nud_GX.Location = new Point(12, 113);
+            nud_GX.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_GX.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            nud_GX.Name = "nud_GX";
+            nud_GX.Size = new Size(120, 23);
+            nud_GX.TabIndex = 59;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(12, 95);
+            label10.Name = "label10";
+            label10.Size = new Size(39, 15);
+            label10.TabIndex = 58;
+            label10.Text = "Giro X";
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(287, 113);
+            numericUpDown1.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDown1.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(120, 23);
+            numericUpDown1.TabIndex = 70;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(287, 95);
+            label4.Name = "label4";
+            label4.Size = new Size(39, 15);
+            label4.TabIndex = 69;
+            label4.Text = "Giro Y";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(287, 183);
+            label2.Name = "label2";
+            label2.Size = new Size(24, 15);
+            label2.TabIndex = 76;
+            label2.Text = "V Z";
+            // 
+            // numericUpDown2
+            // 
+            numericUpDown2.Location = new Point(287, 201);
+            numericUpDown2.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDown2.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            numericUpDown2.Name = "numericUpDown2";
+            numericUpDown2.Size = new Size(120, 23);
+            numericUpDown2.TabIndex = 75;
+            // 
+            // numericUpDown3
+            // 
+            numericUpDown3.Location = new Point(149, 201);
+            numericUpDown3.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDown3.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            numericUpDown3.Name = "numericUpDown3";
+            numericUpDown3.Size = new Size(120, 23);
+            numericUpDown3.TabIndex = 74;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(149, 183);
+            label3.Name = "label3";
+            label3.Size = new Size(24, 15);
+            label3.TabIndex = 73;
+            label3.Text = "V Y";
+            // 
+            // numericUpDown4
+            // 
+            numericUpDown4.Location = new Point(12, 201);
+            numericUpDown4.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDown4.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            numericUpDown4.Name = "numericUpDown4";
+            numericUpDown4.Size = new Size(120, 23);
+            numericUpDown4.TabIndex = 72;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(12, 183);
+            label5.Name = "label5";
+            label5.Size = new Size(24, 15);
+            label5.TabIndex = 71;
+            label5.Text = "V X";
+            // 
+            // Fisica
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(420, 345);
+            Controls.Add(label2);
+            Controls.Add(numericUpDown2);
+            Controls.Add(numericUpDown3);
+            Controls.Add(label3);
+            Controls.Add(numericUpDown4);
+            Controls.Add(label5);
+            Controls.Add(numericUpDown1);
+            Controls.Add(label4);
+            Controls.Add(b_visualizar);
+            Controls.Add(label11);
+            Controls.Add(nud_FZ);
+            Controls.Add(nud_FY);
+            Controls.Add(label12);
+            Controls.Add(nud_FX);
+            Controls.Add(label13);
+            Controls.Add(nud_GY);
+            Controls.Add(label9);
+            Controls.Add(nud_GX);
+            Controls.Add(label10);
+            Controls.Add(nud_tmñ);
+            Controls.Add(label1);
+            Name = "Fisica";
+            Text = "Fisica";
+            ((System.ComponentModel.ISupportInitialize)nud_tmñ).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_FZ).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_FY).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_FX).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GY).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GX).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+        private NumericUpDown nud_tmñ;
+        private Label label1;
+        private Button b_visualizar;
+        private Label label11;
+        private NumericUpDown nud_FZ;
+        private NumericUpDown nud_FY;
+        private Label label12;
+        private NumericUpDown nud_FX;
+        private Label label13;
+        private NumericUpDown nud_GY;
+        private Label label9;
+        private NumericUpDown nud_GX;
+        private Label label10;
+        private NumericUpDown numericUpDown1;
+        private Label label4;
+        private Label label2;
+        private NumericUpDown numericUpDown2;
+        private NumericUpDown numericUpDown3;
+        private Label label3;
+        private NumericUpDown numericUpDown4;
+        private Label label5;
+    }
+}
