@@ -1,130 +1,204 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
 
 namespace _3D_01
 {
+    public struct Fisicas
+    {
+        public float FX, FY, FZ, GX, GY, GZ, VX, VY, VZ, m;
+
+        public Fisicas(float FX, float FY, float FZ, float GX, float GY, float GZ, float VX, float VY, float VZ, float m)
+        {
+            this.FX = FX;
+            this.FY = FY;
+            this.FZ = FZ;
+            this.GX = GX;
+            this.GY = GY;
+            this.GZ = GZ;
+            this.VX = VX;
+            this.VY = VY;
+            this.VZ = VZ;
+            this.m = m;
+        }
+    }
+
     public partial class Simulador : Form
     {
+        private List<Fisicas> fisicas = new List<Fisicas>();
+        private List<string> lineas_archivo = new List<string>();
+
         public Simulador()
         {
             InitializeComponent();
         }
-        public struct Fisica
-        {
-            public float FX, FY, FZ, GX, GY, GZ, VX, VY, VZ, m;
 
-            public Fisica(float FX, float FY, float FZ, float GX, float GY, float GZ, float VX, float VY, float VZ, float m)
-            {
-                this.FX = FX;
-                this.FY = FY;
-                this.FZ = FZ;
-                this.GX = GX;
-                this.GY = GY;
-                this.GZ = GZ;
-                this.VX = VX;
-                this.VY = VY;
-                this.VZ = VZ;
-                this.m = m;
-            }
-            
-                
-        }
-        private List<Fisica> fisicas = new List<Fisica>();
-        
-        private void abrir_Documento(object sender, EventArgs e) //Función que abre el archivo .csv y lee los datos de los vértices
+        private string ruta_destino = null;
+        private void cargar_datos(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
-            openFileDialog1.Filter = "Archivos de texto (*.csv)|*.csv|Todos los archivos (*.*)|*.*";
-            openFileDialog1.Title = "Abrir archivo de texto";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = Directory.GetCurrentDirectory(),
+                Filter = "Archivos de texto (*.csv)|*.csv|Todos los archivos (*.*)|*.*",
+                Title = "Abrir archivo de texto"
+            };
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
-                string[] lineas = sr.ReadToEnd().Split('\n');
-                string linea_final = lineas[lineas.Length - 1];
+                using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
+                {
+                    ruta_destino = openFileDialog1.FileName;
+                    while (!sr.EndOfStream)
+                    {
+                        lineas_archivo.Add(sr.ReadLine());
+                    }
+                }
 
-                string[] valores = linea_final.Split('|');
+                string linea_final = lineas_archivo[lineas_archivo.Count - 1];
+                string[] objetos = linea_final.Split('%');
 
-
-
-                sr.Close();
+                Fisica fis = new Fisica(objetos.Length);
+                fis.FisicaEnviada += RecibirFisicas;
+                fis.Show();
             }
         }
 
-
-
-
-
-
-
-
-        //Función que genera el archivo .csv y le añade los datos de los vértices
-
-
-        private float FX, FY, FZ, GX, GY, Pasos, G, FR;
-        private float[] v1, v2, v3, v4, v5, v6, v7, v8;
-        private float[][] vectores;
-
-
-        private string siguiente_Linea() //Función que genera las lineas mediantes fisicas sin fundamentos
+        private void RecibirFisicas(List<Fisicas> fiss)
         {
+            fisicas = fiss;
+        }
 
-            //string l = "(FX: " + FX + ", FY: " + FY + ", FZ: " + FZ + ", G: " + G + ", FR: " + FR + ")";
-            string l = "";
-
-            foreach (float[] v in vectores)
+        private void g_afisicas_Click(object sender, EventArgs e)
+        {
+            if (fisicas.Count == 0 || lineas_archivo.Count == 0)
             {
-
-                //Aplicar fuerzas
-                v[0] += FX / 100;
-                v[1] += FY / 100;
-                v[2] += FZ / 100;
-
-                //Aplicar gravedad
-                v[1] -= G / 10;
-
-                //Aplicar fricción
-                FX = FX * FR / 100;
-                FY = FY * FR / 100;
-                FZ = FZ * FR / 100;
-
-
-                //Aplicar giros
-                float x, y, z;
-                float cX, cY;
-
-                //Rotar en el eje Y
-
-                cY = GY / 100;
-
-                x = v[0] * (float)Math.Cos(cY) - v[2] * (float)Math.Sin(cY);
-                z = v[0] * (float)Math.Sin(cY) + v[2] * (float)Math.Cos(cY);
-                v[0] = x;
-                v[2] = z;
-
-                // Rotar en el eje X
-
-                cX = GX / 100;
-
-                y = v[1] * (float)Math.Cos(cX) - v[2] * (float)Math.Sin(cX);
-                z = v[1] * (float)Math.Sin(cX) + v[2] * (float)Math.Cos(cX);
-                v[1] = y;
-                v[2] = z;
-
-                //Pone a la linea de salida en el formato esperado |v1.X,v1.Y,v1.Z|...|v8.X,v8.Y,v8.Z
-                l = l + "|" + v[0].ToString().Replace(",", ".") + "," + v[1].ToString().Replace(",", ".") + "," + v[2].ToString().Replace(",", ".");
+                MessageBox.Show("No hay fisicas añadidas");
+                return;
             }
 
-            return l;
+            if (nud_Pasos.Value <= 0)
+            {
+                MessageBox.Show("El número de pasos debe ser mayor que cero.");
+                return;
+            }
+
+            string ultima = lineas_archivo[lineas_archivo.Count - 1];
+
+            string[] split = ultima.Split('%');
+
+            if (fisicas.Count == split.Length)
+            {
+                for (int i = 0; i < (int)nud_Pasos.Value; i++)
+                {
+                    lineas_archivo.Add(siguiente_Linea(fisicas, ultima));
+                    ultima = lineas_archivo[lineas_archivo.Count - 1];
+
+                }
+
+                MessageBox.Show("Fisicas añadidas correctamente");
+                
+                using (StreamWriter sw = new StreamWriter(ruta_destino))
+                {
+                    foreach (string linea in lineas_archivo)
+                    {
+                        sw.WriteLine(linea);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("El número de fisicas no coincide con el número de objetos");
+            }
+
         }
 
-        //Función que llama al otro formulario
-        private void visualizar(object sender, EventArgs e)
+        private string siguiente_Linea(List<Fisicas> fL, string ultimaL)
         {
-            Visualizador viz = new Visualizador();
-            viz.Show();
+            string[] objetos = ultimaL.Split('%');
+            Fisicas[] fisicas = fL.ToArray();
+            StringBuilder lf = new StringBuilder();
+
+            for (int i = 0; i < objetos.Length; i++)
+            {
+                string[] caras = objetos[i].Split('|');
+
+                for (int j = 0; j < caras.Length; j++)
+                {
+                    string[] vertices = caras[j].Split('=');
+
+                    for (int k = 0; k < vertices.Length; k++)
+                    {
+                        if (string.IsNullOrEmpty(vertices[k])) continue; // Ignorar cadenas vacías
+
+                        Vertex v = strVertex(vertices[k]);
+
+                        // Obtener las coordenadas originales del vértice
+                        float x = v.X;
+                        float y = v.Y;
+                        float z = v.Z;
+
+                        // Convertir ángulos de grados a radianes
+                        float thetaX = fisicas[i].GX * (float)(Math.PI / 180.0);
+                        float thetaY = fisicas[i].GY * (float)(Math.PI / 180.0);
+                        float thetaZ = fisicas[i].GZ * (float)(Math.PI / 180.0);
+
+                        // Aplicar rotación en el eje X
+                        float y1 = y * (float)Math.Cos(thetaX) - z * (float)Math.Sin(thetaX);
+                        float z1 = y * (float)Math.Sin(thetaX) + z * (float)Math.Cos(thetaX);
+
+                        // Aplicar rotación en el eje Y
+                        float x2 = x * (float)Math.Cos(thetaY) + z1 * (float)Math.Sin(thetaY);
+                        float z2 = -x * (float)Math.Sin(thetaY) + z1 * (float)Math.Cos(thetaY);
+
+                        // Aplicar rotación en el eje Z
+                        float x3 = x2 * (float)Math.Cos(thetaZ) - y1 * (float)Math.Sin(thetaZ);
+                        float y3 = x2 * (float)Math.Sin(thetaZ) + y1 * (float)Math.Cos(thetaZ);
+
+                        // Asignar los nuevos valores al vértice
+                        v.X = x3;
+                        v.Y = y3;
+                        v.Z = z2;
+
+                        // Agregar el vértice transformado al StringBuilder
+                        lf.AppendFormat(CultureInfo.InvariantCulture, "{0:F6},{1:F6},{2:F6}", v.X, v.Y, v.Z);
+
+                        // Agregar "=" solo si no es el último vértice
+                        if (k < vertices.Length - 1)
+                        {
+                            lf.Append("=");
+                        }
+                    }
+
+                    // Agregar "|" solo si no es la última cara
+                    if (j < caras.Length - 1)
+                    {
+                        lf.Append("|");
+                    }
+                }
+
+                // Agregar "%" solo si no es el último objeto
+                if (i < objetos.Length - 1)
+                {
+                    lf.Append("%");
+                }
+            }
+
+            return lf.ToString();
         }
 
+        private Vertex strVertex(string coords)
+        {
+            string[] partes = coords.Split(',');
 
+            // Convertir las coordenadas a float, usando CultureInfo.InvariantCulture
+            float x = float.Parse(partes[0], CultureInfo.InvariantCulture);
+            float y = float.Parse(partes[1], CultureInfo.InvariantCulture);
+            float z = float.Parse(partes[2], CultureInfo.InvariantCulture);
+
+            return new Vertex(x, y, z);
+        }
     }
 }

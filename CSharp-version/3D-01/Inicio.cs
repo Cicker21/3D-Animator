@@ -37,5 +37,14 @@ namespace _3D_01
             bass.Show();
 
         }
+
+        private void b_fisicas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Simulador sim = new Simulador();
+            sim.FormClosed += (s, args) => this.Show();
+            sim.Show();
+        }
     }
 }

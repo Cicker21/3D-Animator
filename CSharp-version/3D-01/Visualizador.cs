@@ -52,6 +52,12 @@ namespace _3D_01
             string objs = lines[indice];
             if (string.IsNullOrWhiteSpace(objs))
                 return null;
+            if (lines.Length > indice + 1)
+            {
+                indice++;
+            }
+            else { indice = 0; }
+
 
             return objs.Split('%');
         }
@@ -74,7 +80,6 @@ namespace _3D_01
             return color;
         }
 
-        float angle = 0.0f;
         private void openGLControl1_OpenGLDraw(object sender, RenderEventArgs e)
         {
             OpenGL gl = openglControl1.OpenGL;
@@ -85,10 +90,10 @@ namespace _3D_01
 
             // Configurar la cámara
             gl.Translate(0.0f, 0.0f, -15.0f); // Alejar la cámara
-            angle += 0.5f; // Incrementar el ángulo para la animación
 
             if (lines == null)
             {
+                this.Text = "No hay datos";
                 return; // Si no hay datos, salir del método
             }
 
@@ -96,9 +101,11 @@ namespace _3D_01
             string[] objetos = siguientes_objetos();
             if (objetos == null || objetos.Length == 0)
             {
+                this.Text = "No hay objetos";
                 return; // Si no hay objetos, salir del método
             }
 
+            this.Text = $"linea {indice}";
             // Dibujar cada objeto
             for (int k = 0; k < objetos.Length; k++)
             {
@@ -106,10 +113,6 @@ namespace _3D_01
                     continue;
 
                 gl.PushMatrix(); // Guardar la matriz actual
-
-                // Aplicar transformaciones (traslación y rotación)
-                gl.Translate(2.0f * k, 0.0f, 0.0f); // Mover cada objeto a una posición diferente
-                gl.Rotate(angle, 1.0f, 1.0f, 0.0f); // Rotar el objeto
 
                 // Dibujar el objeto
                 DibujarObjeto(gl, objetos[k]);

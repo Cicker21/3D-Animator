@@ -36,6 +36,7 @@
             // 
             openglControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             openglControl1.DrawFPS = true;
+            openglControl1.FrameRate = 10;
             openglControl1.Location = new Point(13, 12);
             openglControl1.Margin = new Padding(4, 3, 4, 3);
             openglControl1.Name = "openglControl1";
