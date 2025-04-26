@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bases));
             label1 = new Label();
             nud_tmñ = new NumericUpDown();
             nud_dx = new NumericUpDown();
@@ -341,6 +342,7 @@
             Controls.Add(label2);
             Controls.Add(nud_tmñ);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Bases";
             Text = "Crear Bases";
             ((System.ComponentModel.ISupportInitialize)nud_tmñ).EndInit();

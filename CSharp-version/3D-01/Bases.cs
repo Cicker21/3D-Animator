@@ -16,6 +16,9 @@ namespace _3D_01
         private string ruta_csv = null;
         private string ProcessOBJFile(string filePath)
         {
+            diff_x = 0;
+            diff_y = 0;
+            diff_z = 0;
 
             if (filePath == null)
             {
@@ -104,39 +107,29 @@ namespace _3D_01
             decimal dy = nud_dy.Value;
             decimal dz = nud_dz.Value;
 
-            x_ *= tamaño;
-            y_ *= tamaño;
-            z_ *= tamaño;
+            // Aplicar escala y dirección
+            x_ *= tamaño * dx;
+            y_ *= tamaño * dy;
+            z_ *= tamaño * dz;
 
-            x_ *= dx;
-            y_ *= dy;
-            z_ *= dz;
-
-
-            //Origen v1
-            if (i == 0)
+            // Solo calcular las diferencias una vez (con el primer vértice procesado)
+            if (diff_x == 0 && diff_y == 0 && diff_z == 0)
             {
-                diff_x = x_ - v1x;
-                diff_y = y_ - v1y;
-                diff_z = z_ - v1z;
-
-                x_ = v1x;
-                y_ = v1y;
-                z_ = v1z;
-            }
-            else
-            {
-                x = x + diff_x;
-                y = y + diff_y;
-                z = z + diff_z;
+                diff_x = v1x - x_;
+                diff_y = v1y - y_;
+                diff_z = v1z - z_;
             }
 
-            x = x_.ToString().Replace(",", ".");
-            y = y_.ToString().Replace(",", ".");
-            z = z_.ToString().Replace(",", ".");
+            // Aplicar desplazamiento a todos los vértices
+            x_ += diff_x;
+            y_ += diff_y;
+            z_ += diff_z;
 
+            string xStr = x_.ToString().Replace(",", ".");
+            string yStr = y_.ToString().Replace(",", ".");
+            string zStr = z_.ToString().Replace(",", ".");
 
-            return new string[] { x, y, z };
+            return new string[] { xStr, yStr, zStr };
         }
         private void b_generar_Click(object sender, EventArgs e)
         {

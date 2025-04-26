@@ -27,7 +27,7 @@ namespace _3D_01
             int fc = fisicas.Count;
             if (fc < cantidad)
             {
-                fisicas.Add(new Fisicas((float)nud_FX.Value, (float)nud_FY.Value, (float)nud_FZ.Value, (float)nud_GX.Value, (float)nud_GY.Value, (float)nud_GZ.Value, (float)nud_VX.Value, (float)nud_VY.Value, (float)nud_VZ.Value, (float)nud_m.Value));
+                fisicas.Add(new Fisicas((float)nud_GeX.Value, (float)nud_GeY.Value, (float)nud_GeZ.Value, (float)nud_GX.Value, (float)nud_GY.Value, (float)nud_GZ.Value, (float)nud_VX.Value, (float)nud_VY.Value, (float)nud_VZ.Value, (float)nud_m.Value));
                 this.Text = $"Fisica ({fc + 1}/{cantidad})";
 
             }

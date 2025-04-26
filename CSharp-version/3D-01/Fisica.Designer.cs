@@ -32,10 +32,10 @@
             label1 = new Label();
             b_visualizar = new Button();
             label11 = new Label();
-            nud_FZ = new NumericUpDown();
-            nud_FY = new NumericUpDown();
+            nud_GeZ = new NumericUpDown();
+            nud_GeY = new NumericUpDown();
             label12 = new Label();
-            nud_FX = new NumericUpDown();
+            nud_GeX = new NumericUpDown();
             label13 = new Label();
             nud_GY = new NumericUpDown();
             label9 = new Label();
@@ -50,9 +50,9 @@
             nud_VX = new NumericUpDown();
             label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)nud_m).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nud_FZ).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nud_FY).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nud_FX).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GeZ).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GeY).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GeX).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nud_GY).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nud_GX).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nud_GZ).BeginInit();
@@ -95,54 +95,54 @@
             label11.AutoSize = true;
             label11.Location = new Point(287, 139);
             label11.Name = "label11";
-            label11.Size = new Size(23, 15);
+            label11.Size = new Size(44, 15);
             label11.TabIndex = 67;
-            label11.Text = "F Z";
+            label11.Text = "Giro- Z";
             // 
-            // nud_FZ
+            // nud_GeZ
             // 
-            nud_FZ.Location = new Point(287, 157);
-            nud_FZ.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            nud_FZ.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            nud_FZ.Name = "nud_FZ";
-            nud_FZ.Size = new Size(120, 23);
-            nud_FZ.TabIndex = 66;
+            nud_GeZ.Location = new Point(287, 157);
+            nud_GeZ.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_GeZ.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            nud_GeZ.Name = "nud_GeZ";
+            nud_GeZ.Size = new Size(120, 23);
+            nud_GeZ.TabIndex = 66;
             // 
-            // nud_FY
+            // nud_GeY
             // 
-            nud_FY.Location = new Point(149, 157);
-            nud_FY.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            nud_FY.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            nud_FY.Name = "nud_FY";
-            nud_FY.Size = new Size(120, 23);
-            nud_FY.TabIndex = 65;
+            nud_GeY.Location = new Point(149, 157);
+            nud_GeY.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_GeY.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            nud_GeY.Name = "nud_GeY";
+            nud_GeY.Size = new Size(120, 23);
+            nud_GeY.TabIndex = 65;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Location = new Point(149, 139);
             label12.Name = "label12";
-            label12.Size = new Size(23, 15);
+            label12.Size = new Size(44, 15);
             label12.TabIndex = 64;
-            label12.Text = "F Y";
+            label12.Text = "Giro- Y";
             // 
-            // nud_FX
+            // nud_GeX
             // 
-            nud_FX.Location = new Point(12, 157);
-            nud_FX.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            nud_FX.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            nud_FX.Name = "nud_FX";
-            nud_FX.Size = new Size(120, 23);
-            nud_FX.TabIndex = 63;
+            nud_GeX.Location = new Point(12, 157);
+            nud_GeX.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            nud_GeX.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
+            nud_GeX.Name = "nud_GeX";
+            nud_GeX.Size = new Size(120, 23);
+            nud_GeX.TabIndex = 63;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Location = new Point(12, 139);
             label13.Name = "label13";
-            label13.Size = new Size(23, 15);
+            label13.Size = new Size(44, 15);
             label13.TabIndex = 62;
-            label13.Text = "F X";
+            label13.Text = "Giro- X";
             // 
             // nud_GY
             // 
@@ -267,10 +267,10 @@
             Controls.Add(label4);
             Controls.Add(b_visualizar);
             Controls.Add(label11);
-            Controls.Add(nud_FZ);
-            Controls.Add(nud_FY);
+            Controls.Add(nud_GeZ);
+            Controls.Add(nud_GeY);
             Controls.Add(label12);
-            Controls.Add(nud_FX);
+            Controls.Add(nud_GeX);
             Controls.Add(label13);
             Controls.Add(nud_GY);
             Controls.Add(label9);
@@ -281,9 +281,9 @@
             Name = "Fisica";
             Text = "Fisica";
             ((System.ComponentModel.ISupportInitialize)nud_m).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nud_FZ).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nud_FY).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nud_FX).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GeZ).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GeY).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nud_GeX).EndInit();
             ((System.ComponentModel.ISupportInitialize)nud_GY).EndInit();
             ((System.ComponentModel.ISupportInitialize)nud_GX).EndInit();
             ((System.ComponentModel.ISupportInitialize)nud_GZ).EndInit();
@@ -299,10 +299,10 @@
         private Label label1;
         private Button b_visualizar;
         private Label label11;
-        private NumericUpDown nud_FZ;
-        private NumericUpDown nud_FY;
+        private NumericUpDown nud_GeZ;
+        private NumericUpDown nud_GeY;
         private Label label12;
-        private NumericUpDown nud_FX;
+        private NumericUpDown nud_GeX;
         private Label label13;
         private NumericUpDown nud_GY;
         private Label label9;

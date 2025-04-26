@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulador));
             nud_G = new NumericUpDown();
             label2 = new Label();
             nud_Pasos = new NumericUpDown();
@@ -105,6 +106,7 @@
             Controls.Add(label6);
             Controls.Add(label2);
             Controls.Add(nud_G);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Simulador";
             Text = "Simulador";
             ((System.ComponentModel.ISupportInitialize)nud_G).EndInit();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             b_init = new Button();
             b_create = new Button();
             b_fisicas = new Button();
@@ -71,6 +72,7 @@
             Controls.Add(b_fisicas);
             Controls.Add(b_create);
             Controls.Add(b_init);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Inicio";
             Text = "Inicio";
             ResumeLayout(false);

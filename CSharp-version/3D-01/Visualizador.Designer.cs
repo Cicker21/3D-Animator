@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Visualizador));
             openglControl1 = new SharpGL.OpenGLControl();
             ((System.ComponentModel.ISupportInitialize)openglControl1).BeginInit();
             SuspendLayout();
@@ -36,7 +37,7 @@
             // 
             openglControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             openglControl1.DrawFPS = true;
-            openglControl1.FrameRate = 10;
+            openglControl1.FrameRate = 30;
             openglControl1.Location = new Point(13, 12);
             openglControl1.Margin = new Padding(4, 3, 4, 3);
             openglControl1.Name = "openglControl1";
@@ -53,6 +54,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(829, 450);
             Controls.Add(openglControl1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Visualizador";
             Text = "Visualizador";
             ((System.ComponentModel.ISupportInitialize)openglControl1).EndInit();
