@@ -154,7 +154,7 @@ namespace _3D_02
                 this.Invoke((MethodInvoker)delegate
                 {
                     // Limpiar y mostrar datos crudos
-                    richTextBox1.Text = Data;
+                    raw.Text = Data;
 
                     // Parsear datos (formato esperado: "frame,theta1,omega1,theta2,omega2")
                     string[] dSplit = Data.Split(',');

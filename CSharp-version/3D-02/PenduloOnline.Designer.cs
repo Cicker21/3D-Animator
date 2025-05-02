@@ -32,36 +32,39 @@
             btnConectar = new Button();
             lblTheta1 = new Label();
             lblTheta2 = new Label();
-            richTextBox1 = new RichTextBox();
+            raw = new Label();
             ((System.ComponentModel.ISupportInitialize)openGLControl).BeginInit();
             SuspendLayout();
             // 
             // openGLControl
             // 
+            openGLControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             openGLControl.DrawFPS = false;
-            openGLControl.Location = new Point(13, 126);
+            openGLControl.Location = new Point(12, 74);
             openGLControl.Margin = new Padding(4, 3, 4, 3);
             openGLControl.Name = "openGLControl";
             openGLControl.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             openGLControl.RenderContextType = SharpGL.RenderContextType.DIBSection;
             openGLControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            openGLControl.Size = new Size(693, 312);
+            openGLControl.Size = new Size(793, 364);
             openGLControl.TabIndex = 1;
             openGLControl.OpenGLDraw += openGLControl_OpenGLDraw;
             // 
             // btnConectar
             // 
-            btnConectar.Location = new Point(713, 126);
+            btnConectar.BackColor = Color.FromArgb(128, 255, 128);
+            btnConectar.ForeColor = SystemColors.Desktop;
+            btnConectar.Location = new Point(13, 45);
             btnConectar.Name = "btnConectar";
-            btnConectar.Size = new Size(75, 23);
+            btnConectar.Size = new Size(184, 23);
             btnConectar.TabIndex = 2;
-            btnConectar.Text = "button1";
-            btnConectar.UseVisualStyleBackColor = true;
+            btnConectar.Text = "Conectar";
+            btnConectar.UseVisualStyleBackColor = false;
             // 
             // lblTheta1
             // 
             lblTheta1.AutoSize = true;
-            lblTheta1.Location = new Point(35, 36);
+            lblTheta1.Location = new Point(13, 9);
             lblTheta1.Name = "lblTheta1";
             lblTheta1.Size = new Size(55, 15);
             lblTheta1.TabIndex = 3;
@@ -71,26 +74,27 @@
             // lblTheta2
             // 
             lblTheta2.AutoSize = true;
-            lblTheta2.Location = new Point(35, 70);
+            lblTheta2.Location = new Point(12, 27);
             lblTheta2.Name = "lblTheta2";
             lblTheta2.Size = new Size(55, 15);
             lblTheta2.TabIndex = 4;
             lblTheta2.Text = "lblTheta2";
             // 
-            // richTextBox1
+            // raw
             // 
-            richTextBox1.Location = new Point(290, 12);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(416, 96);
-            richTextBox1.TabIndex = 5;
-            richTextBox1.Text = "";
+            raw.AutoSize = true;
+            raw.Location = new Point(282, 12);
+            raw.Name = "raw";
+            raw.Size = new Size(26, 15);
+            raw.TabIndex = 5;
+            raw.Text = "raw";
             // 
             // PenduloOnline
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(richTextBox1);
+            ClientSize = new Size(817, 450);
+            Controls.Add(raw);
             Controls.Add(lblTheta2);
             Controls.Add(lblTheta1);
             Controls.Add(btnConectar);
@@ -107,6 +111,6 @@
         private Button btnConectar;
         private Label lblTheta1;
         private Label lblTheta2;
-        private RichTextBox richTextBox1;
+        private Label raw;
     }
 }
