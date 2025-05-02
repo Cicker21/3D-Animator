@@ -4,9 +4,11 @@
 *.obj
 *.tmp
 *.bat
+*.md
 
 # Carpetas ignoradas:
 bin/
 obj/
 Properties/
 .vs/
+experimental/

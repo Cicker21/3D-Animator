@@ -7,8 +7,5 @@
     <Compile Update="PenduloOnline.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="VisualizadorOnline.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

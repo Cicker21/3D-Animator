@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PenduloOnline));
             openGLControl = new SharpGL.OpenGLControl();
             btnConectar = new Button();
             lblTheta1 = new Label();
@@ -99,6 +100,7 @@
             Controls.Add(lblTheta1);
             Controls.Add(btnConectar);
             Controls.Add(openGLControl);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PenduloOnline";
             Text = "PenduloOnline";
             ((System.ComponentModel.ISupportInitialize)openGLControl).EndInit();
