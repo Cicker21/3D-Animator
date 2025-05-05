@@ -138,7 +138,8 @@ namespace _3D_01
                 gl.Color(color[0], color[1], color[2]);
 
                 // Dibujar la cara
-                gl.Begin(OpenGL.GL_QUADS);
+
+                gl.Begin(OpenGL.GL_POLYGON);  // Acepta cualquier número de vértices ? 3
                 string[] vertices = cara.Split('=');
                 foreach (string vertice in vertices)
                 {
@@ -149,6 +150,7 @@ namespace _3D_01
                     Vertex v = strVertex(vertice);
                     gl.Vertex(v.X, v.Y, v.Z);
                 }
+
                 gl.End();
             }
         }
