@@ -21,12 +21,15 @@ namespace _3D_01
         {
             this.Hide();
 
-            Visualizador vis = new Visualizador();
-            vis.FormClosed += (s, args) => this.Show();
-            vis.Show();
+            var ventanaOpenTK = new _3D_01.VisualizadorTK();
+            ventanaOpenTK.Closed += (s, args) =>
+            {
+                this.Invoke((MethodInvoker)(() => this.Show()));
+            };
 
-
+            ventanaOpenTK.Run();
         }
+
 
         private void crear(object sender, EventArgs e)
         {

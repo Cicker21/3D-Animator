@@ -15,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AssimpNet" Version="4.1.0" />
-    <PackageReference Include="SharpGL" Version="3.1.1" />
-    <PackageReference Include="SharpGL.WinForms" Version="3.1.1" />
+    <PackageReference Include="OpenTK" Version="3.3.3" />
   </ItemGroup>
 
 </Project>
